@@ -41,25 +41,25 @@ public class InterestModule implements Runnable {
 			double interest = Math.floor(balance * rate);
 			TransactionResult result = acc.add(interest);
 
-			String message = "You can get it every exact hour, when you are online!";
+			String message = "";
 			switch (result) {
 			case SUCCESS:
 				message = ChatColor.GREEN + "You earned " + interest
 						+ " interest of your " + balance
 						+ " balance at a rate of " + rate
-						+ "%, which was added to your vault. " + message;
-				break;
+						+ "%, which was added to your vault.";
+				p.sendMessage(message);
 			case INSUFFICIENT_SPACE:
-				message = ChatColor.GREEN + "You earned " + interest
+				message = ChatColor.RED + "You earned " + interest
 						+ " interest of your " + balance
 						+ " balance at a rate of " + rate
-						+ "%, which was added to your vault. " + message;
-				break;
+						+ "%, but you don't have enough space in your vault";
+				p.sendMessage(message);
 			default:
-				return;
+				break;
 			}
-			p.sendMessage(message);
-
+			p.sendMessage(ChatColor.GREEN
+					+ "Remember you can get it every exact hour, when you are online!");
 		}
 	}
 
