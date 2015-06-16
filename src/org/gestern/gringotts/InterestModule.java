@@ -13,7 +13,7 @@ import org.gestern.gringotts.api.impl.GringottsEco;
 public class InterestModule implements Runnable {
 	private final Eco eco = new GringottsEco();
 	private final double rate = 1.0 / 100.0;
-	private long timer = 20 * 60 * 60;
+	private final long period = 20 * 60 * 60;
 
 	@SuppressWarnings("deprecation")
 	protected void start() {
@@ -23,7 +23,7 @@ public class InterestModule implements Runnable {
 		int seconds = date.getSeconds();
 		long delay = 20 * (60 - seconds) * (60 - minutes);
 		out(delay);
-		Bukkit.getScheduler().runTaskTimer(Gringotts.G, this, delay, timer);
+		Bukkit.getScheduler().runTaskTimer(Gringotts.G, this, delay, period);
 	}
 
 	@Override
