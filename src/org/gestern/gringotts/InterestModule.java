@@ -17,12 +17,11 @@ public class InterestModule implements Runnable {
 
 	@SuppressWarnings("deprecation")
 	protected void start() {
-		long time = System.currentTimeMillis();
-		Date date = new Date(time);
+		Date date = new Date(System.currentTimeMillis());
 		int minutes = date.getMinutes();
 		int seconds = date.getSeconds();
 		long delay = 20 * (60 - seconds) * (60 - minutes);
-		out(delay);
+
 		Bukkit.getScheduler().runTaskTimer(Gringotts.G, this, delay, period);
 	}
 
