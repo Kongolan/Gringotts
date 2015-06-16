@@ -1,0 +1,11 @@
+/target
+/bin
+/lib
+/.settings
+.classpath
+.project
+.idea
+.DS_Store
+dependency-reduced-pom.xml
+Gringotts.iml
+/plugin.yml
