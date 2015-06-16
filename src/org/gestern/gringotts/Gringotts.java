@@ -75,8 +75,13 @@ public class Gringotts extends JavaPlugin {
 			registerCommands();
 			registerEvents();
 			registerEconomy();
-			
-			new InterestModule().start();
+
+			Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+				@Override
+				public void run() {
+					new InterestModule().start();
+				}
+			});
 
 		} catch (GringottsStorageException | GringottsConfigurationException e) {
 			log.severe(e.getMessage());
