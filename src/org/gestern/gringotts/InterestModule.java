@@ -20,7 +20,7 @@ public class InterestModule implements Runnable {
 		Date date = new Date(System.currentTimeMillis());
 		int minutes = date.getMinutes();
 		int seconds = date.getSeconds();
-		long delay = 20 * (60 - seconds) * (60 - minutes);
+		long delay = period - (minutes * 60) - (seconds * 20);
 
 		Bukkit.getScheduler().runTaskTimer(Gringotts.G, this, delay, period);
 	}
