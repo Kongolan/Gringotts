@@ -20,7 +20,7 @@ public class InterestModule implements Runnable {
 		Date date = new Date(System.currentTimeMillis());
 		int minutes = date.getMinutes();
 		int seconds = date.getSeconds();
-		long delay = period - (minutes * 60) - (seconds * 20);
+		long delay = period - (minutes * 60 * 20) - (seconds * 20);
 
 		Bukkit.getScheduler().runTaskTimer(Gringotts.G, this, delay, period);
 	}
@@ -43,16 +43,16 @@ public class InterestModule implements Runnable {
 			switch (result) {
 			case SUCCESS:
 				String success = ChatColor.GREEN + "You earned " + interest
-						+ " interest of your " + balance
+						+ " interest to your " + balance
 						+ " balance at a rate of " + rate
-						+ "%, which was added to your vault.";
+						+ "% , which was added to your vault.";
 				p.sendMessage(success);
 				break;
 			case INSUFFICIENT_SPACE:
 				String no_space = ChatColor.RED + "You earned " + interest
-						+ " interest of your " + balance
+						+ " interest to your " + balance
 						+ " balance at a rate of " + rate
-						+ "%, but you don't have enough space in your vault";
+						+ "% , but you don't have enough space in your vault";
 				p.sendMessage(no_space);
 				break;
 			default:
@@ -64,10 +64,6 @@ public class InterestModule implements Runnable {
 					+ "Remember you can get it every exact hour, when you are online!";
 			p.sendMessage(reminder);
 		}
-	}
-
-	public void out(Object out) {
-		System.out.println(out);
 	}
 
 }
